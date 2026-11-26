@@ -1,52 +1,39 @@
 # FinCalGlobal
 
-Free financial calculators for loans, savings, retirement, tax, everyday money and business: https://fincalglobal.com
+Free financial calculators for loans, savings, retirement, tax, everyday money and business, plus dashboards and custom calculators for businesses: https://fincalglobal.com
 
-The whole site is one static page (`index.html`), so it runs on GitHub Pages with no build step.
+The site is static HTML, so it runs on GitHub Pages with no build step. Every calculator has its own page and address, such as `/emi-calculator/`, so search engines can index and rank each one separately.
 
-## Files
+## What's in the repository
 
-| File | Purpose |
+| Path | Purpose |
 | --- | --- |
-| `index.html` | The website: all calculators, the privacy policy and the contact page |
-| `CNAME` | Tells GitHub Pages to serve the site at fincalglobal.com |
-| `.nojekyll` | Serves the files as they are, without Jekyll processing |
+| `index.html` | Home page |
+| `<calculator>/index.html` | One page per calculator (57 pages), plus `services/`, `privacy-policy/` and `contact/` |
+| `og/*.png` | A social sharing image for every page |
+| `favicon.svg`, `favicon.ico`, `favicon-32.png`, `apple-touch-icon.png`, `icon-192.png`, `icon-512.png`, `site.webmanifest` | Browser, phone and app icons |
+| `sitemap.xml`, `robots.txt` | Tell search engines which pages to crawl |
+| `CNAME` | Serves the site at fincalglobal.com |
+| `.nojekyll` | Publishes the files exactly as they are |
 | `404.html` | Sends broken links back to the home page |
-| `favicon.svg`, `apple-touch-icon.png` | Browser tab and phone home-screen icons |
-| `og-image.png` | Preview image when the site is shared on social media |
-| `robots.txt`, `sitemap.xml` | Help search engines find and index the site |
 
 ## Publish on GitHub Pages
 
-1. Create a new **public** repository on GitHub, for example `fincalglobal`.
-2. Upload every file in this folder to the root of the repository, including `.nojekyll` (it's hidden on some computers).
-3. In the repository, open **Settings › Pages**.
-4. Under **Build and deployment**, set **Source** to **Deploy from a branch**, choose **main** and **/ (root)**, then **Save**.
-5. Under **Custom domain**, confirm it shows `fincalglobal.com` (the `CNAME` file sets it).
-6. When the DNS check passes, tick **Enforce HTTPS**.
+1. Upload everything in this folder to the root of your repository, including the hidden `.nojekyll` file, and replace the old files.
+2. **Settings › Pages**: Source **Deploy from a branch**, branch **main**, folder **/ (root)**.
+3. Custom domain **fincalglobal.com**, then **Enforce HTTPS** once the DNS check passes.
 
-## DNS records at your domain registrar
+DNS records (check GitHub's current guide: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site):
 
-Replace `YOUR-USERNAME` with your GitHub username.
-
-| Type | Name / host | Value |
+| Type | Host | Value |
 | --- | --- | --- |
-| A | @ | 185.199.108.153 |
-| A | @ | 185.199.109.153 |
-| A | @ | 185.199.110.153 |
-| A | @ | 185.199.111.153 |
-| AAAA | @ | 2606:50c0:8000::153 |
-| AAAA | @ | 2606:50c0:8001::153 |
-| AAAA | @ | 2606:50c0:8002::153 |
-| AAAA | @ | 2606:50c0:8003::153 |
+| A | @ | 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153 (one record each) |
+| AAAA | @ | 2606:50c0:8000::153, 2606:50c0:8001::153, 2606:50c0:8002::153, 2606:50c0:8003::153 |
 | CNAME | www | YOUR-USERNAME.github.io |
 
-DNS changes can take up to 24 hours. Check GitHub's current guide before you start: https://docs.github.com/en/pages/configuring-a-custom-domain-for-your-github-pages-site
+## After the site is live
 
-## Updating the site
-
-Edit `index.html` (or upload a new version) and commit. GitHub Pages republishes within a minute or two.
-
-## Contact
-
-support@fincalglobal.com
+1. **Google Search Console** (https://search.google.com/search-console): add `fincalglobal.com` as a Domain property, verify it with the DNS TXT record it gives you, then submit `https://fincalglobal.com/sitemap.xml` under **Sitemaps**.
+2. **Bing Webmaster Tools** (https://www.bing.com/webmasters): import the site from Search Console.
+3. Test pages with Google's **Rich Results Test** (https://search.google.com/test/rich-results) and **PageSpeed Insights** (https://pagespeed.web.dev).
+4. When you add a YouTube video to a page, update its upload date in the page's structured data.
